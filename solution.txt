@@ -1,0 +1,42 @@
+import os
+
+
+log_file_path = "/content/logs_2024_log"  
+
+
+def preview_log_file(log_file, num_lines=10):
+    
+
+    try:
+        with open(log_file, "r", encoding="utf-8", errors="ignore") as file:
+            print("\n📄 Preview of Log File:")
+            for _ in range(num_lines):
+                print(file.readline().strip())
+    except Exception as e:
+        print(f"❌ Error reading file: {e}")
+
+
+def extract_logs(log_file, date, output_dir="output"):
+
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, f"output_{date}.txt")
+
+    try:
+        with open(log_file, "r", encoding="utf-8", errors="ignore") as file, open(output_file, "w", encoding="utf-8") as output:
+            for line in file:
+                clean_line = line.lstrip()
+                if clean_line.startswith(date):  
+                    output.write(line)
+
+        print(f"✅ Logs for {date} saved to: {output_file}")
+    except Exception as e:
+        print(f"❌ Error: {e}")
+
+
+preview_log_file(log_file_path)
+
+
+date_to_extract = "2024-12-01"  
+
+
+extract_logs(log_file_path, date_to_extract)
