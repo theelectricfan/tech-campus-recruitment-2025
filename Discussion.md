@@ -99,6 +99,6 @@ g++ -o extract_logs extract_logs.cpp
 
 ---
 
-**Developed by:** Ayush Sehgal
+**Developed by:** Gourav Goyal
 **Date:** 25/2/2025  
-**Contact:** ayushks.cs.21@nitj.ac.in
+**Contact:** gouravg.cs.21@nitj.ac.in
